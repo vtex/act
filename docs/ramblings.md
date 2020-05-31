@@ -1,20 +1,8 @@
-# act - WORK IN PROGRESS
-
-> *~think~ act different*
-
-*app config tree*  
-*automatic config tool*  
-*autonomy creates trust*  
-*alignment causes transformation*  
-*TODO: create a three-word image generator as WIP for act itself.*  
-
-`act` is a git-and-deno-based framework for distributed configuration management following the *code as configuration* pattern, inspired by [Facebook's `configerator`](https://research.fb.com/wp-content/uploads/2016/11/holistic-configuration-management-at-facebook.pdf) and VTEX IO [`apps and workspaces`](https://vtex.io/docs/concepts/workspace/).
-
 `act` proposes a mechanism to version and deploy inter-dependent configuration packages (*apps*) for distributed services. It does that by defining how these *apps* and *services* may relate to each other (e.g. *extend, configure, depend*) and providing tools to deploy, run and A/B test these services over time.
 
 You can think of `act` as an opinionated toolset that allows organizations to safely evolve how arbitrarily large and complex systems act. While git is a low-level powertool to manage the state of a specific set of files, `act` wraps it (and deno) to implement a distributed and scalable end-to-end configuration management solution.
 
-## Getting started
+## How
 
 `act-cli` implements the lowest level API of operations to manage the state of an `act tenant`, which is an `act`-managed git repository. To start using `act`, simply create a GitHub repository and add it as a remote by using the command:
 
