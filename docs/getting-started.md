@@ -9,7 +9,11 @@ Let's implement a simple `deno` service and make it configurable by:
 - Importing said state into our application to determine service behaviour
 - Installing apps to manage service behaviour
 
-## Creating a deno service
+## Pre-requisites
+
+If you haven't done so, go and [install Deno](https://deno.land) and [setup git](https://help.github.com/en/github/getting-started-with-github/set-up-git).
+
+## Creating an example service
 
 If you haven't done so, go and [install Deno](https://deno.land).
 
@@ -38,15 +42,15 @@ console.log(`Server: http://localhost:8000/`);
 console.log(`State:`, state);
 
 listenAndServe({port: 8000}, (req: ServerRequest) => {
-  const keys = Object.keys(state)
-  const lengths = keys.map((k: string) => state[k].length)
-  const selectedIndexes = lengths.map((l: number) => Math.floor(Math.random() * l))
-  const selectedWords = keys.map((k: string, index: number) => state[k][selectedIndexes[index]])
+  const keys = Object.keys(state) // [a, c, t]
+  const lengths = keys.map((k: string) => state[k].length) // [2, 2, 3]
+  const selectedIndexes = lengths.map((l: number) => Math.floor(Math.random() * l)) // [0, 0, 1]
+  const selectedWords = keys.map((k: string, index: number) => state[k][selectedIndexes[index]]) // [app, config, tool]
   req.respond({ body: selectedWords.join(' ') });
 })
 ```
 
-And create the `state.json` file with this content: 
+And create a `state.json` file with this content: 
 
 ```json
 {
@@ -81,7 +85,22 @@ Now, check your server works by calling it with curl:
 app config tree
 ```
 
+Great! Now we have a working server that reads state from a local file.
+With `act`, we can compose this state by installing multiple `apps`, allowing us to control the service behaviour.
+
 ## Creating a tenant
+
+The `act` CLI acts on two types of repositories: `tenants` and `apps`. Tenants are the containers for service state. Apps package configuration to be installed in tenants. 
+
+Our first step, therefore, is to declare a `tenant` by running, in an empty folder:
+
+```sh
+> act init
+```
+
+This will initialize an empty git repo and create an empty `installed.act.ts` file.
+
+*TIP:* All files managed by `act` have the `.act.ts` extension, indicating they implement the act DSL and only import packages from the `act.pm` package manager.
 
 ## Declaring a builder
 
@@ -89,8 +108,10 @@ app config tree
 
 ## Building a service state
 
-## Importing our state
+## Importing the service state
 
-## Installing apps to manage behaviour
+## Using the native deno runtime
+
+## Installing apps to control behaviour
 
 

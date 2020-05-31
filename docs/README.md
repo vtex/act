@@ -12,7 +12,7 @@
 
 `act` helps **developers** make services configurable by allowing them to declare *builders* that build *configs* into an *immutable service state* for consumption by a *runtime*. 
 
-`act` helps **application users** manage service configuration by allowing them to install and uninstall *apps* (packages of builders, configs or runtimes), which result in different behaviours when combined. 
+`act` helps **application users** manage service configuration by allowing them to install and uninstall *apps* (packages of builders, configs or runtimes) in *tenants*, which result in different behaviours when combined. 
 
 `act` treats *code as configuration*, inspired by [Facebook's `configerator`](https://research.fb.com/wp-content/uploads/2016/11/holistic-configuration-management-at-facebook.pdf) and VTEX IO [`apps and workspaces`](https://vtex.io/docs/concepts/workspace/).
 
@@ -27,3 +27,4 @@
 Contents: 
 
 - [Getting started](/docs/getting-started.md)
+- [Architecture](/docs/architecture.md)
